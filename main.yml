@@ -1,0 +1,11 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - uri:
+        url:            "{{ api_url }}{{api_job_path}}?name={{api_search}}"
+        user:           "{{ user }}"
+        password:       "{{ pass }}"
+        method:         GET
+        status_code:    200
+        validate_certs: false
+      register: api_results
