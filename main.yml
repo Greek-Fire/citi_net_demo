@@ -10,9 +10,18 @@
         force_basic_auth: true
         validate_certs:   false
     register:           api_results
+    
+  - set_fact:
+      api_url: "api_url: {{ api_url }}"
+      api_job_path: "api_job_path: {{ api_job_path}}"
+      api_search: "api_search: {{ api_search }}"
+      user: "user: {{ user }}"
+      pass: "pass: {{pass }}"
+      
+      
       
   - set_fact:
-      ext_vars: "api_url: {{api_url}} + '\n' + api_job_path: {{api_job_path}} + '\n' + api_search: {{api_search}} + '\n' + user: {{user}} + '\n + pass: {{pass}}"
+      ext_vars: "api_url + '\n' + api_job_path + '\n' + api_search + '\n' + user + '\n + pass "
       temp_id:  "{{ (api_results.json.results | first)['id'] }}"      
   - uri:
       url:              "{{ api_url }}{{api_job_path}}/{{temp_id}}/launch/"
