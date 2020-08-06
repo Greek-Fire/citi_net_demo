@@ -22,6 +22,7 @@
       status_code:      201
       force_basic_auth: true
       validate_certs:   false
+      body_format:      json
       body:
         extra_vars:     "{{ ext_vars }}"
       
