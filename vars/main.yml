@@ -1,0 +1,5 @@
+pass: redhat
+user: admin
+api_url: https://ap8.example.net
+api_job_path: /api/v2/jobs
+api_search: test
