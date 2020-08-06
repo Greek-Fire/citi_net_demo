@@ -4,7 +4,7 @@
   - uri:
         url:              "{{ api_url }}{{api_job_path}}?name={{api_search}}"
         user:             "{{ user }}"
-        password:         "{{ pass }}"
+        password:         "{{ passwd }}"
         method:           GET
         status_code:      200
         force_basic_auth: true
@@ -21,12 +21,12 @@
       
       
   - set_fact:
-      ext_vars: "api_url + '\n' + api_job_path + '\n' + api_search + '\n' + user + '\n + pass "
+      ext_vars: "api_url + '\n' + api_job_path + '\n' + api_search + '\n' + user + '\n + passwd "
       temp_id:  "{{ (api_results.json.results | first)['id'] }}"      
   - uri:
       url:              "{{ api_url }}{{api_job_path}}/{{temp_id}}/launch/"
       user:             "{{ user }}"
-      password:         "{{ pass }}"
+      password:         "{{ passwd }}"
       method:           POST
       status_code:      201
       force_basic_auth: true
