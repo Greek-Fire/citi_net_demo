@@ -7,5 +7,6 @@
         password:       "{{ pass }}"
         method:         GET
         status_code:    200
+        force_basic_auth: true
         validate_certs: false
       register: api_results
