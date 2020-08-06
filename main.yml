@@ -12,7 +12,7 @@
     register:           api_results
       
   - set_fact:
-      ext_vars: "{{api_url}} + '\n' + api_job_path: {{api_job_path}} + '\n' + api_search: {{api_search}} + '\n' + user: {{user}} + '\n + pass: {{pass}}"
+      ext_vars: "api_url: {{api_url}} + '\n' + api_job_path: {{api_job_path}} + '\n' + api_search: {{api_search}} + '\n' + user: {{user}} + '\n + pass: {{pass}}"
       temp_id:  "{{ (api_results.json.results | first)['id'] }}"      
   - uri:
       url:              "{{ api_url }}{{api_job_path}}/{{temp_id}}/launch/"
