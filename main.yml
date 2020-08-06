@@ -9,7 +9,7 @@
         status_code:      200
         force_basic_auth: true
         validate_certs:   false
-      register:           api_results
+    register:           api_results
       
   - set_fact:
       ext_vars: "{{api_url}}+'\n'{{api_job_path}}+'\n'{{api_search}}+'\n'{{user}}+'\n\+{{pass}}"
