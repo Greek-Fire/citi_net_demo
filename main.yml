@@ -12,11 +12,12 @@
     register:           api_results
     
   - set_fact:
-      api_url: "api_url: {{ api_url }}"
-      api_job_path: "api_job_path: {{ api_job_path}}"
-      api_search: "api_search: {{ api_search }}"
-      user: "user: {{ user }}"
-      passwd: "passwd: {{passwd }}"
+      api_url: "{{ api_url }}"
+      api_job_path: "{{ api_job_path}}"
+      api_search: "{{ api_search }}"
+      user: "{{ user }}"
+      passwd: "{{passwd }}"
+      
       
       
       
