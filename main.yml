@@ -15,7 +15,7 @@
       ext_vars: "{{api_url}} + '\n' + {{api_job_path}} + '\n' + {{api_search}} + '\n' + {{user}} + '\n + {{pass}}"
       temp_id:  "{{ (api_results.json.results | first)['id'] }}"      
   - uri:
-      url:              "{{ api_url }}{{api_job_path}}{{temp_id}}/launch/"
+      url:              "{{ api_url }}{{api_job_path}}/{{temp_id}}/launch/"
       user:             "{{ user }}"
       password:         "{{ pass }}"
       method:           POST
