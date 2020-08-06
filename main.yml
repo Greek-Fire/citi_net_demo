@@ -12,9 +12,9 @@
       register:           api_results
       
   - set_fact:
-      ext_vars: "{{api_url}}+'\n'{{api_job_path}}+'\n'{{api_search}}+'\n'{{user}}+'\n\+{{pass}}+'\n'{{api_launch_path}}"
+      ext_vars: "{{api_url}}+'\n'{{api_job_path}}+'\n'{{api_search}}+'\n'{{user}}+'\n\+{{pass}}"
   - uri:
-      url:              "{{ api_url }}{{api_launch_path}}{{temp_id}}/launch/"
+      url:              "{{ api_url }}{{api_job_path}}{{temp_id}}/launch/"
       user:             "{{ user }}"
       password:         "{{ pass }}"
       method:           POST
