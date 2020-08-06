@@ -1,12 +1,26 @@
 - hosts: all
   gather_facts: false
   tasks:
-    - uri:
-        url:            "{{ api_url }}{{api_job_path}}?name={{api_search}}"
-        user:           "{{ user }}"
-        password:       "{{ pass }}"
-        method:         GET
-        status_code:    200
+  - uri:
+        url:              "{{ api_url }}{{api_job_path}}?name={{api_search}}"
+        user:             "{{ user }}"
+        password:         "{{ pass }}"
+        method:           GET
+        status_code:      200
         force_basic_auth: true
-        validate_certs: false
-      register: api_results
+        validate_certs:   false
+      register:           api_results
+      
+  - set_fact:
+      ext_vars: "{{api_url}}+'\n'{{api_job_path}}+'\n'{{api_search}}+'\n'{{user}}+'\n\+{{pass}}+'\n'{{api_launch_path}}"
+  - uri:
+      url:              "{{ api_url }}{{api_launch_path}}{{temp_id}}/launch/"
+      user:             "{{ user }}"
+      password:         "{{ pass }}"
+      method:           POST
+      status_code:      201
+      force_basic_auth: true
+      validate_certs:   false
+      body:
+        extra_vars:     "{{ ext_vars }}"
+      
