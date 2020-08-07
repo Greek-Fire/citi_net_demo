@@ -16,7 +16,7 @@
       extra_vars: "{{api_results.json.results  | map(attribute='extra_vars') | first | to_json }}"
       
   - uri:
-        url:              "{{ api_url }}{{api_job_path}}/{{job_tempate_id}}/launch"
+        url:              "{{ api_url }}{{api_job_path}}/{{job_tempate_id}}/launch/"
         user:             "{{ user }}"
         password:         "{{ passwd }}"
         method:           POST
