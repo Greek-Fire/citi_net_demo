@@ -11,5 +11,17 @@
         validate_certs:   false
     register:           api_results
     
-
+  - set_fact:
+      job_tempate_id: "{{ api_results.results | map(attribute='id') | first }}"
+      extra_vars: "{{api_results.results  | map(attribute='extra_vars') | first | to_json }}"
       
+  - uri:
+        url:              "{{ api_url }}{{api_job_path}}/{{job_tempate_id}}/launch"
+        user:             "{{ user }}"
+        password:         "{{ passwd }}"
+        method:           POST
+        status_code:      201
+        force_basic_auth: true
+        validate_certs:   false      
+        body:
+          extra_vars: "{{extra_vars}}"
